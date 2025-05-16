@@ -69,13 +69,32 @@ public class RestTemplateConfig {
     @LoadBalanced
     public RestTemplate restTemplateSsl() throws Exception {
     	KeyStore trustStore = KeyStore.getInstance("JKS");
-    	
+    	/**
+         * Load keystore from system file: "server.ss.key-store": file:/var/lib/../ms1-truststore.jks
+         */
     	try (FileInputStream fis = new FileInputStream(serviceParamsProperties.getTruststore().getPath())) {
-    	    trustStore.load(fis, serviceParamsProperties.getTruststore().getPassword().toCharArray());
-    	} catch (IOException | NoSuchAlgorithmException e) {
-    	    logger.error("Failed to load truststore from system path..!", e);
-    	}
-        
+            trustStore.load(fis, serviceParamsProperties.getTruststore().getPassword().toCharArray());
+            logger.info("Truststore loaded successfully from {}", serviceParamsProperties.getTruststore().getPath());
+        } catch (IOException e) {
+            logger.error("Failed to read truststore file: {}", serviceParamsProperties.getTruststore().getPath(), e);
+            throw new IOException("Failed to read truststore file: " + serviceParamsProperties.getTruststore().getPath(), e);
+        } catch (NoSuchAlgorithmException e) {
+            logger.error("Failed to load truststore due to invalid format or certificate", e);
+            throw new NoSuchAlgorithmException("Failed to load truststore", e);
+        }
+        if (trustStore.size() == 0) {
+            logger.error("Truststore is empty: {}", serviceParamsProperties.getTruststore().getPath());
+            throw new IllegalStateException("Truststore is empty: " + serviceParamsProperties.getTruststore().getPath());
+        }
+        /**
+         * Load keystore from classpath: "server.ss.key-store": classpath:ms1-truststore.jks
+         */
+//    	try (FileInputStream fis = new FileInputStream(serviceParamsProperties.getTruststore().getPath())) {
+//		    trustStore.load(fis, serviceParamsProperties.getTruststore().getPassword().toCharArray());
+//        	logger.info("Truststore loaded successfully from {}", serviceParamsProperties.getTruststore().getPath());
+//		} catch (IOException | NoSuchAlgorithmException e) {
+//		    logger.error("Failed to load truststore from system path..!", e);
+//		}
 //      trustStore.load(getClass().getResourceAsStream(
 //    		serviceParamsProperties.getTruststore().getPath()), serviceParamsProperties.getTruststore().getPassword().toCharArray());
 

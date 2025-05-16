@@ -23,16 +23,27 @@
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>${springdoc.version}</version>
 		</dependency>
+		<!--
+		import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+		import org.apache.http.impl.client.CloseableHttpClient;
+		import org.apache.http.impl.client.HttpClients;
+		-->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.14</version>
 		</dependency>
+		<!--
+		import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+		-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-commons</artifactId>
 			<version>3.1.8</version>
 		</dependency>
+		<!--
+		import org.springframework.cloud.context.config.annotation.RefreshScope;
+		-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-context</artifactId>
