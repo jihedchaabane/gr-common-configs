@@ -1,4 +1,4 @@
-package com.chj.gr.config;
+package com.chj.gr.config.swagger;
 
 import java.util.List;
 import java.util.stream.Collectors;

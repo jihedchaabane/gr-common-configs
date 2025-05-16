@@ -1,4 +1,4 @@
-package com.chj.gr.config;
+package com.chj.gr.config.resttemplate;
 
 import java.security.KeyStore;
 

@@ -1,4 +1,4 @@
-package com.chj.gr.config;
+package com.chj.gr.config.swagger;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
