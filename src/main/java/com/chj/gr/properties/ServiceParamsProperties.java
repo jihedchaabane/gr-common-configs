@@ -100,7 +100,7 @@ public class ServiceParamsProperties {
 
     public static class Oauth2 {
         private String issuerUri;
-
+        private String loadBalancedIssuerUri;
         public String getIssuerUri() {
             return issuerUri;
         }
@@ -108,6 +108,14 @@ public class ServiceParamsProperties {
         public void setIssuerUri(String issuerUri) {
             this.issuerUri = issuerUri;
         }
+
+		public String getLoadBalancedIssuerUri() {
+			return loadBalancedIssuerUri;
+		}
+
+		public void setLoadBalancedIssuerUri(String loadBalancedIssuerUri) {
+			this.loadBalancedIssuerUri = loadBalancedIssuerUri;
+		}
     }
 
     public static class Gateway {
