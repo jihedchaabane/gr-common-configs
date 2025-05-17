@@ -16,6 +16,7 @@ public class ServiceParamsProperties {
     private Oauth2 oauth2 = new Oauth2();
     private Gateway gateway = new Gateway();
     private GatewayOauth2 gatewayOauth2 = new GatewayOauth2();
+    private SwaggerAggregator swaggerAggregator = new SwaggerAggregator();
     private Zipkin zipkin = new Zipkin();
     private Keystore keystore = new Keystore();
     private Truststore truststore = new Truststore();
@@ -52,7 +53,15 @@ public class ServiceParamsProperties {
         this.gatewayOauth2 = gatewayOauth2;
     }
 
-    public Zipkin getZipkin() {
+    public SwaggerAggregator getSwaggerAggregator() {
+		return swaggerAggregator;
+	}
+
+	public void setSwaggerAggregator(SwaggerAggregator swaggerAggregator) {
+		this.swaggerAggregator = swaggerAggregator;
+	}
+
+	public Zipkin getZipkin() {
         return zipkin;
     }
 
@@ -114,6 +123,18 @@ public class ServiceParamsProperties {
     }
 
     public static class GatewayOauth2 {
+        private String uri;
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+    }
+
+    public static class SwaggerAggregator {
         private String uri;
 
         public String getUri() {
